@@ -1,0 +1,27 @@
+import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+class BreakingBadDioClient {
+  Dio _dio;
+
+  BreakingBadDioClient() {
+    _dio = Dio(baseOptions());
+    addInterceptors();
+  }
+
+  Dio get instance => _dio;
+
+  BaseOptions baseOptions() {
+    return BaseOptions(
+      connectTimeout: 5000,
+      receiveTimeout: 5000,
+      sendTimeout: 5000,
+      baseUrl: env['BREAKING_BAD_API_URL'],
+    );
+  }
+
+  void addInterceptors() {
+    // dio.interceptors.add(LogInterceptor());
+    // dio.interceptors.add(tokenInterceptor());
+  }
+}
