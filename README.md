@@ -1,6 +1,6 @@
 # example_app
 
-A new Flutter project.
+A simple app using riverpod, .env, dio and a very good basic structure for small apps.
 
 ## Getting Started
 
