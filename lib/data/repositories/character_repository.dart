@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../core/errors/server_failure.dart';
+import '../../core/error/failures.dart';
 import '../../services/error_handler_service.dart';
 import '../datasources/remote/character_api.dart';
 import '../models/character_model.dart';
