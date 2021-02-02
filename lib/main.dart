@@ -1,4 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart' as dot_env;
 import 'package:flutter_riverpod/all.dart';
@@ -13,7 +14,12 @@ void main() async {
   await dot_env.load(fileName: envFile);
 
   runApp(ProviderScope(
-    child: MyApp(),
+    child: EasyLocalization(
+      supportedLocales: const [Locale('pt', 'BR'), Locale('en', 'US')],
+      path: 'assets/translations',
+      fallbackLocale: const Locale('en', 'US'),
+      child: MyApp(),
+    ),
   ));
 }
 
@@ -27,6 +33,9 @@ class MyApp extends ConsumerWidget {
       theme: theme.state,
       builder: BotToastInit(),
       navigatorObservers: [BotToastNavigatorObserver()],
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       home: const HomeScreen(),
     );
   }

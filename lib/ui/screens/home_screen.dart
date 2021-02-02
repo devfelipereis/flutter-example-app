@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -21,9 +22,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Basic Example',
-          style: TextStyle(color: Colors.white),
+        title: Text(
+          'home_title'.tr(),
+          style: const TextStyle(color: Colors.white),
         ),
         actions: [
           Padding(
@@ -31,32 +32,67 @@ class HomeScreen extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 showModalBottomSheet(
-                    context: context,
-                    builder: (BuildContext bc) {
-                      return Wrap(
-                        children: <Widget>[
-                          ListTile(
-                            title: const Text('Light'),
-                            onTap: () {
-                              context.read(themeDataProvider).state =
-                                  lightThemeData;
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                          ListTile(
-                            title: const Text('Dark'),
-                            onTap: () {
-                              context.read(themeDataProvider).state =
-                                  darkThemeData;
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
-                      );
-                    });
+                  context: context,
+                  builder: (BuildContext _) {
+                    return Wrap(
+                      children: <Widget>[
+                        ListTile(
+                          title: const Text('Light'),
+                          onTap: () {
+                            context.read(themeDataProvider).state =
+                                lightThemeData;
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                        ListTile(
+                          title: const Text('Dark'),
+                          onTap: () {
+                            context.read(themeDataProvider).state =
+                                darkThemeData;
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
               },
               child: const Icon(
                 Icons.color_lens,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: GestureDetector(
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext _) {
+                    return Wrap(
+                      children: <Widget>[
+                        ListTile(
+                          title: const Text('pt-BR'),
+                          onTap: () {
+                            context.locale = const Locale('pt', 'BR');
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                        ListTile(
+                          title: const Text('en-US'),
+                          onTap: () {
+                            context.locale = const Locale('en', 'US');
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: const Icon(
+                Icons.translate,
                 color: Colors.white,
               ),
             ),
