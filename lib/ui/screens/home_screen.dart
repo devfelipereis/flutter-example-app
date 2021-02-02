@@ -102,14 +102,14 @@ class HomeScreen extends StatelessWidget {
       bottomNavigationBar: Consumer(builder: (context, watch, _) {
         final index = watch(tabIndexProvider).state;
         return BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
+          items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.dashboard),
-              label: 'Posts',
+              icon: const Icon(Icons.dashboard),
+              label: 'tab_posts'.tr(),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.people),
-              label: 'Characters',
+              icon: const Icon(Icons.people),
+              label: 'tab_characters'.tr(),
             ),
           ],
           currentIndex: index,
