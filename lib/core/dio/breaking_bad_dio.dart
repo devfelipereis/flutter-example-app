@@ -21,7 +21,7 @@ class BreakingBadDioClient {
   }
 
   void addInterceptors() {
-    // dio.interceptors.add(LogInterceptor());
-    // dio.interceptors.add(tokenInterceptor());
+    // _dio.interceptors.add(LogInterceptor());
+    // _dio.interceptors.add(tokenInterceptor());
   }
 }

@@ -273,6 +273,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.2"
+  http_certificate_pinning:
+    dependency: "direct main"
+    description:
+      name: http_certificate_pinning
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
   http_parser:
     dependency: transitive
     description:
