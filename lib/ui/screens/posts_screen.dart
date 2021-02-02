@@ -16,6 +16,7 @@ class PostsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final posts = watch(postsProvider);
+
     return posts.when(
       loading: () => const DefaultLoading(),
       error: (e, _) => DefaultError(e.toString()),

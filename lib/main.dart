@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart' as dot_env;
 import 'package:flutter_riverpod/all.dart';
 
 import 'ui/screens/home_screen.dart';
+import 'ui/themes/app_theme_provider.dart';
 
 // ignore: avoid_void_async
 void main() async {
@@ -16,16 +17,14 @@ void main() async {
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ScopedReader watch) {
+    final theme = watch(themeDataProvider);
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: theme.state,
       builder: BotToastInit(),
       navigatorObservers: [BotToastNavigatorObserver()],
       home: const HomeScreen(),
