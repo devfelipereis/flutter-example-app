@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
 
@@ -32,9 +33,11 @@ class PostsScreen extends ConsumerWidget {
             },
             itemBuilder: (context, index) {
               final post = data[index];
-              return ListTile(
-                title: Text(post.title),
-                subtitle: Text(post.body),
+              return FadeIn(
+                child: ListTile(
+                  title: Text(post.title),
+                  subtitle: Text(post.body),
+                ),
               );
             },
           ),

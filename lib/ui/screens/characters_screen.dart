@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,8 +33,10 @@ class CharactersScreen extends ConsumerWidget {
             },
             itemBuilder: (context, index) {
               final character = data[index];
-              return CharacterItem(
-                character: character,
+              return FadeIn(
+                child: CharacterItem(
+                  character: character,
+                ),
               );
             },
           ),
