@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class BreakingBadDioClient {
-  Dio _dio;
+  late Dio _dio;
 
   BreakingBadDioClient() {
     _dio = Dio(baseOptions());

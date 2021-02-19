@@ -50,8 +50,8 @@ class CharacterItem extends StatelessWidget {
   final CharacterModel character;
 
   const CharacterItem({
-    Key key,
-    @required this.character,
+    Key? key,
+    required this.character,
   }) : super(key: key);
 
   @override

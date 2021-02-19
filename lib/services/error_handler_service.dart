@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 class ErrorHandlerService {
   static String getErrorMessage(dynamic error) {
     if (error == null) {
-      return null;
+      throw Exception('TypeError: error is null');
     }
 
     if (error is DioError) {
       return getErrorMesssageForDio(error);
     }
 
-    throw error;
+    throw Exception(error);
   }
 
   static String getErrorMesssageForDio(DioError e) {

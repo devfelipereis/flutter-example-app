@@ -1,33 +1,19 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 
 class PostModel extends Equatable {
   const PostModel({
-    @required this.userId,
-    @required this.id,
-    @required this.title,
-    @required this.body,
+    required this.userId,
+    required this.id,
+    required this.title,
+    required this.body,
   });
 
   final int userId;
   final int id;
   final String title;
   final String body;
-
-  PostModel copyWith({
-    int userId,
-    int id,
-    String title,
-    String body,
-  }) =>
-      PostModel(
-        userId: userId ?? this.userId,
-        id: id ?? this.id,
-        title: title ?? this.title,
-        body: body ?? this.body,
-      );
 
   factory PostModel.fromJson(String str) =>
       PostModel.fromMap(json.decode(str) as Map<String, dynamic>);

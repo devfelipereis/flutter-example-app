@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 
 import '../../core/error/failures.dart';
 import '../../services/error_handler_service.dart';
@@ -12,7 +11,7 @@ class CharacterRepository {
   CharacterApiDataSource characterApiDataSource;
 
   CharacterRepository({
-    @required this.characterApiDataSource,
+    required this.characterApiDataSource,
   });
 
   Future<List<CharacterModel>> all() async {

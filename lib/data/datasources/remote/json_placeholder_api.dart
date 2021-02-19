@@ -1,16 +1,15 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 
 import '../../../core/dio/jsonplaceholder_dio.dart';
 import '../../models/post_model.dart';
 
 class JsonPlaceholderApiDataSource {
-  Dio _dio;
+  late Dio _dio;
 
   JsonPlaceholderApiDataSource({
-    @required JsonPlaceholderDioClient jsonPlaceholderDioClient,
+    required JsonPlaceholderDioClient jsonPlaceholderDioClient,
   }) {
     _dio = jsonPlaceholderDioClient.instance;
   }

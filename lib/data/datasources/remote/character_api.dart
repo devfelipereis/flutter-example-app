@@ -1,16 +1,15 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 
 import '../../../core/dio/breaking_bad_dio.dart';
 import '../../models/character_model.dart';
 
 class CharacterApiDataSource {
-  Dio _dio;
+  late Dio _dio;
 
   CharacterApiDataSource({
-    @required BreakingBadDioClient breakingBadDioClient,
+    required BreakingBadDioClient breakingBadDioClient,
   }) {
     _dio = breakingBadDioClient.instance;
   }

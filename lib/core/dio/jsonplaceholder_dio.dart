@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http_certificate_pinning/certificate_pinning_interceptor.dart';
 
 class JsonPlaceholderDioClient {
-  Dio _dio;
+  late Dio _dio;
 
   JsonPlaceholderDioClient() {
     _dio = Dio(baseOptions());

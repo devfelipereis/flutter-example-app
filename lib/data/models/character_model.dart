@@ -1,14 +1,13 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 
 class CharacterModel extends Equatable {
   const CharacterModel({
-    @required this.id,
-    @required this.name,
-    @required this.img,
-    @required this.nickname,
+    required this.id,
+    required this.name,
+    required this.img,
+    required this.nickname,
   });
 
   final int id;
