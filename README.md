@@ -1,6 +1,9 @@
 # example_app
 
-A simple app using riverpod, .env, dio and a very good basic structure for small apps.
+A simple app using riverpod/states_rebuilder, .env, dio and a very basic structure for small apps.
+
+Branch master is using riverpod.
+For states_rebuilder change to states_rebuilder branch (using null safety).
 
 ## Getting Started
 
