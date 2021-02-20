@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:states_rebuilder/states_rebuilder.dart';
 
 import '../themes/app_theme_provider.dart';
 import '../themes/dark_theme.dart';
@@ -8,7 +8,7 @@ import '../themes/light_theme.dart';
 import 'characters_screen.dart';
 import 'posts_screen.dart';
 
-final tabIndexProvider = StateProvider((ref) => 0);
+final tabIndexProvider = RM.inject<int>(() => 0);
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen();
@@ -39,16 +39,14 @@ class HomeScreen extends StatelessWidget {
                         ListTile(
                           title: const Text('Light'),
                           onTap: () {
-                            context.read(themeDataProvider).state =
-                                lightThemeData;
+                            theme.themeMode = ThemeMode.light;
                             Navigator.of(context).pop();
                           },
                         ),
                         ListTile(
                           title: const Text('Dark'),
                           onTap: () {
-                            context.read(themeDataProvider).state =
-                                darkThemeData;
+                            theme.themeMode = ThemeMode.dark;
                             Navigator.of(context).pop();
                           },
                         ),
@@ -99,9 +97,8 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: Consumer(builder: (context, watch, _) {
-        final index = watch(tabIndexProvider).state;
-        return BottomNavigationBar(
+      bottomNavigationBar: On(
+        () => BottomNavigationBar(
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: const Icon(Icons.dashboard),
@@ -112,18 +109,17 @@ class HomeScreen extends StatelessWidget {
               label: 'tab_characters'.tr(),
             ),
           ],
-          currentIndex: index,
+          currentIndex: tabIndexProvider.state,
           selectedItemColor: Theme.of(context).primaryColor,
-          onTap: (int index) => context.read(tabIndexProvider).state = index,
-        );
-      }),
-      body: Consumer(builder: (context, watch, _) {
-        final index = watch(tabIndexProvider).state;
-        return IndexedStack(
-          index: index,
+          onTap: (int index) => tabIndexProvider.setState((s) => index),
+        ),
+      ).listenTo(tabIndexProvider),
+      body: On(
+        () => IndexedStack(
+          index: tabIndexProvider.state,
           children: _screens,
-        );
-      }),
+        ),
+      ).listenTo(tabIndexProvider),
     );
   }
 }
